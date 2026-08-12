@@ -32,7 +32,6 @@ class AppServiceProvider extends ServiceProvider
             if (config('database.default') === 'sqlite' && file_exists($dbPath)) {
                 if (!Schema::hasTable('products')) {
                     Artisan::call('migrate', ['--force' => true]);
-                    Artisan::call('db:seed', ['--force' => true]);
                 }
             }
         } catch (\Throwable $e) {
